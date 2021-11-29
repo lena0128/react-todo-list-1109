@@ -35,6 +35,15 @@ class ListForm extends React.Component {
           }) 
     }
 
+
+    // this funtionality is built into PureComponent
+    // if this method returns false, the component is not going to render
+    shouldComponentUpdate(prevState, presProps){
+        if(this.state === prevState) {
+            return false
+        }
+    }
+
     render(){
         return(
             <form onSubmit={this.handleSubmit}>
