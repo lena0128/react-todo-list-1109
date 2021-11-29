@@ -32,15 +32,23 @@ class Lists extends React.Component {
         })
     }
 
+    handleClick = () => {
+        this.setState({
+            lists: this.state.lists
+        })
+    }
+
     render(){
-        console.log("2 - render")
+        // note that the key(s) are ONLY for the virtual DOM to decide what needs to to update
+        // They will not display on the real DOM; you will not see a key in the HTML
         return(
-            <div>
+            <React.Fragment>
+                <button onClick={this.handleClick}>Click Me!</button>
                 <ListForm sendData={this.updateState} />
                 <ul>
-                    {this.state.lists.map((list, index) => <List key={index} list={list} />)}
+                    {this.state.lists.map((list, index) => <React.Fragment key={index}><List list={list} /><p>Check details</p></React.Fragment>)}
                 </ul>
-            </div>
+            </React.Fragment>
         )
     }
 }
